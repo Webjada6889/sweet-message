@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Message for You 💛</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffe6f0, #fff0b3); /* soft pink to soft yellow */
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 5px #fff;
+    }
+
+    #photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ff4d6d;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255,77,109,0.5);
+    }
+
+    #message {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 30px;
+      transition: all 0.5s ease;
+    }
+
+    #surpriseBtn {
+      padding: 10px 25px;
+      font-size: 1rem;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    #surpriseBtn:hover {
+      background-color: #ff1a40;
+      transform: scale(1.1);
+    }
+
+    /* Heart animation */
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 1s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💛 A Sweet Message for You 💛</h1>
+  
+  <!-- Add your girlfriend's photo here -->
+  <img id="photo" src="Screenshot 2025-09-22 201411.png" alt="Her Photo">
+
+  <div id="message">Loading...</div>
+  <button id="surpriseBtn">Click for another surprise ❤️</button>
+
+  <script>
+    const messages = [
+      "You make my day brighter Asiya ☀️",
+      "Your smile is magic Asiya😄",
+      "I’m lucky to know you Asiya💛",
+      "You make everything better Asiya🌸",
+      "Thinking of you makes me happy Asiya😊",
+      "You are amazing just as you are Asiya✨",
+      "Your laughter is my favorite sound Asiya😍",
+      "You make my heart smile Asiya💖",
+      "You’re my favorite person Asiya🌟",
+      "Being with you feels like home Asiya🏡"
+    ];
+
+    const messageDiv = document.getElementById('message');
+    const button = document.getElementById('surpriseBtn');
+
+    function showMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      messageDiv.textContent = messages[randomIndex];
+      createHeart();
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = Math.random() * window.innerHeight + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 1000);
+    }
+
+    button.addEventListener('click', showMessage);
+
+    // Show a message immediately on page load
+    showMessage();
+  </script>
+
+</body>
+</html>
